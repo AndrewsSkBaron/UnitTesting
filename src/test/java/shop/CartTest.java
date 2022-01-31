@@ -46,8 +46,11 @@ class CartTest {
 
     @Test
     void deleteRealItem() {
+        cart.addRealItem(car);
+        cart.addRealItem(car2);
         cart.deleteRealItem(car);
         assertEquals(totalCar, cart.getTotalPrice());
+        cart.showItems();
     }
 
     @Test
@@ -60,8 +63,11 @@ class CartTest {
 
     @Test
     void deleteVirtualItem() {
+        cart.addVirtualItem(disk);
+        cart.addVirtualItem(disk2);
         cart.deleteVirtualItem(disk);
         assertEquals(totalDisk, cart.getTotalPrice());
+        cart.showItems();
     }
 
 
