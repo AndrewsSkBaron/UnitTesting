@@ -32,14 +32,13 @@ class CartTest {
         disk.setPrice(28);
         disk2.setPrice(88);
 
-        totalCar = car.getPrice() + (car.getPrice() * 0.2) + car2.getPrice() + (car2.getPrice() * 0.2);
-        totalDisk = disk.getPrice() + (disk.getPrice() * 0.2) + disk2.getPrice() + (disk2.getPrice() * 0.2);
     }
 
     @Test
     void addRealItem() {
         cart.addRealItem(car);
         cart.addRealItem(car2);
+        totalCar = car.getPrice() + (car.getPrice() * 0.2) + car2.getPrice() + (car2.getPrice() * 0.2);
         assertEquals("andrew-cart", cart.getCartName());
         assertEquals(totalCar, cart.getTotalPrice());
     }
@@ -49,14 +48,15 @@ class CartTest {
         cart.addRealItem(car);
         cart.addRealItem(car2);
         cart.deleteRealItem(car);
+        totalCar = car2.getPrice() + (car2.getPrice() * 0.2);
         assertEquals(totalCar, cart.getTotalPrice());
-        cart.showItems();
     }
 
     @Test
     void addVirtualItem() {
         cart.addVirtualItem(disk);
         cart.addVirtualItem(disk2);
+        totalDisk = disk.getPrice() + (disk.getPrice() * 0.2) + disk2.getPrice() + (disk2.getPrice() * 0.2);
         assertEquals("andrew-cart", cart.getCartName());
         assertEquals(totalDisk, cart.getTotalPrice());
     }
@@ -66,9 +66,8 @@ class CartTest {
         cart.addVirtualItem(disk);
         cart.addVirtualItem(disk2);
         cart.deleteVirtualItem(disk);
+        totalDisk = disk2.getPrice() + (disk2.getPrice() * 0.2);
         assertEquals(totalDisk, cart.getTotalPrice());
-        cart.showItems();
     }
-
 
 }
