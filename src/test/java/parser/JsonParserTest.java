@@ -20,6 +20,7 @@ class JsonParserTest {
     private JsonParser jsonParser = new JsonParser();
     @BeforeEach
     public void createObj() {
+        /**/
         RealItem car = new RealItem();
         VirtualItem disk = new VirtualItem();
 
