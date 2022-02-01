@@ -43,7 +43,6 @@ class JsonParserTest {
         Cart cartObj = jsonParser.readFromFile(new File("src/main/resources/" + cart.getCartName() + ".json"));
         assertEquals(cartObj.getCartName(), cart.getCartName());
         assertEquals(cartObj.getTotalPrice(), cart.getTotalPrice());
-        assertEquals(cartObj.getTotalPrice(), cart.getTotalPrice());
     }
 
     @Test
