@@ -1,24 +1,37 @@
 package parser;
 
 import com.google.gson.Gson;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import shop.Cart;
 import shop.RealItem;
 import shop.VirtualItem;
 
+
 import java.io.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.expectThrows;
+
 
 class JsonParserTest {
     private Cart cart = new Cart("test-andrew-cart");
     private Gson gson = new Gson();
     private JsonParser jsonParser = new JsonParser();
-    @BeforeEach
+
+    @DataProvider(name = "string")
+    public Object[][] dataProvFunc(){
+        return new Object[][]{
+                {"car"},
+                {"car-andrew"},
+                {"andrews"},
+                {"andrew-car"},
+                {"test-andrew-cart"}
+        };
+    }
+
+    @BeforeMethod
     public void createObj() {
         RealItem car = new RealItem();
         VirtualItem disk = new VirtualItem();
@@ -34,6 +47,7 @@ class JsonParserTest {
         cart.addRealItem(car);
         cart.addVirtualItem(disk);
     }
+
 
     @Test
     void readFromFile() throws IOException {
@@ -55,11 +69,10 @@ class JsonParserTest {
         assertEquals(cartObj.getTotalPrice(), cart.getTotalPrice());
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = { "car", "car-andrew", "andrews","andrew-car", "test-andrew-cart"})
+    @Test(dataProvider ="string")
     public void testThrowsException(String param) throws NoSuchFileException {
         File template = new File(param);
-        Throwable thrown = assertThrows(NoSuchFileException.class, () -> {
+        Throwable thrown = expectThrows(NoSuchFileException.class, () -> {
             new JsonParser().readFromFile(template);
         });
         assertEquals(thrown.getMessage(), String.format("File %s.json not found!", template));

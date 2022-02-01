@@ -1,1 +1,1 @@
-{"cartName":"test-andrew-cart","realItems":[{"weight":1560.0,"name":"WV","price":21582.9}],"virtualItems":[{"sizeOnDisk":20000.0,"name":"Linux","price":28.0}],"total":25933.08}
+{"cartName":"test-andrew-cart","realItems":[{"weight":1560.0,"name":"WV","price":21582.9},{"weight":1560.0,"name":"WV","price":21582.9}],"virtualItems":[{"sizeOnDisk":20000.0,"name":"Linux","price":28.0},{"sizeOnDisk":20000.0,"name":"Linux","price":28.0}],"total":51866.16}
