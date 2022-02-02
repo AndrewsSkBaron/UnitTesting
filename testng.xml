@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/AndreiBaron/IdeaProjects/UnitTesting">
+        <classes>
+            <class name="parser.JsonParserTest">
+                <methods>
+                    <include name="readFromFile"/>
+                    <include name="writeToFile"/>
+                    <include name="testThrowsException"/>
+                </methods>
+            </class>
+            <class name="shop.CartTest">
+                <methods>
+                    <include name="addRealItem"/>
+                    <include name="deleteRealItem"/>
+                    <include name="addVirtualItem"/>
+                    <include name="deleteVirtualItem"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

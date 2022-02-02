@@ -1,7 +1,7 @@
 package shop;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
 
@@ -16,7 +16,7 @@ class CartTest {
     double totalCar = 0;
     double totalDisk = 0;
 
-    @BeforeEach
+    @BeforeMethod
     public void createObj() {
         cart = new Cart("andrew-cart");
 
